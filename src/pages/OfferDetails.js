@@ -9,12 +9,16 @@ const OfferDetails = () => {
   // USESTATES
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // const [id] = useState(useParams());
 
   // functions
 
   // start HERE
   useEffect(() => {
-    const fetchData = async (url) => {
+    const fetchData = async () => {
+      //eslint - disable - next - line;
+      const url =
+        "https://site--backend-vinted--gw6mlgwnmzwz.code.run/offer/" + id;
       try {
         const response = await axios.get(url);
         setOffer(response.data);
@@ -23,10 +27,8 @@ const OfferDetails = () => {
         console.log(error.response);
       }
     };
-    const url =
-      "https://site--backend-vinted--gw6mlgwnmzwz.code.run/offer/" + id;
-    fetchData(url);
-  }, []);
+    fetchData();
+  }, [id]);
 
   // RETURN Here
   return (
