@@ -35,7 +35,7 @@ const OfferDetails = () => {
         <p className="container is-loading">Chargement en cours</p>
       ) : (
         <div className="background-color">
-          <div className="container offer-detail">
+          <div className="container offer-details">
             <section className="picture">
               {offer.product_image[0]?.secure_url && (
                 <img src={offer.product_image[0].secure_url} alt="produit" />
@@ -84,10 +84,9 @@ const OfferDetails = () => {
                       alt="avatar"
                     />
                   )}
-                  <p>{offer.owner.account.username}</p>
+                  <span>{offer.owner.account.username}</span>
                 </div>
               )}
-
               <button className="buy">Acheter</button>
             </section>
           </div>

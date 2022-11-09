@@ -74,6 +74,7 @@ header button:last-child {
 .home-hero {
   height: 450px;
   position: relative;
+  margin-bottom: 40px;
 }
 .home-hero .ban {
   height: 450px;
@@ -117,6 +118,7 @@ header button:last-child {
 /* HOME */
 /*        Offers List */
 .offers-list {
+  margin: 40px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -159,12 +161,102 @@ header button:last-child {
   font-size: 12px;
   color: rgb(155, 155, 155);
 }
+/* HOME : Handle Pages */
+.handle-page {
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.handle-page button {
+  width: 50px;
+  height: 30px;
+  background-color: #22b1ba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.handle-page button:hover {
+  cursor: pointer;
+}
+.handle-page span {
+  font-size: 18px;
+  margin: 0 20px;
+}
 
 /* PAGE OFFER-DETAIL */
 .background-color {
   background-color: #ebedee;
+  height: 100vh;
 }
 .offer-details {
   display: flex;
   justify-content: space-around;
+  padding: 30px 0;
+}
+.offer-details .picture {
+  width: 450px;
+  height: 600px;
+}
+.offer-details .picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.offer-details .offer-description {
+  box-sizing: border-box;
+  width: 400px;
+  height: 600px;
+  background-color: white;
+  padding: 50px 40px;
+}
+.offer-description h1 {
+  font-size: 24px;
+  line-height: 50px;
+}
+.offer-description .main-details {
+  width: 100%;
+  height: 160px;
+  line-height: 25px;
+  display: flex;
+  font-size: 14px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgrey;
+}
+.offer-description .main-details .title {
+  width: 50%;
+  color: rgb(155, 155, 155);
+}
+.offer-description h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+.offer-description h3 {
+  font-size: 16px;
+  color: rgb(155, 155, 155);
+  margin: 20px 0;
+}
+.offer-description .owner {
+  display: flex;
+  align-items: center;
+}
+.offer-description .owner img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 25px;
+}
+.offer-description .buy {
+  margin: 40px auto;
+  width: 100%;
+  height: 40px;
+  background-color: #22b1ba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.offer-description .buy:hover {
+  cursor: pointer;
 }
