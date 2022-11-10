@@ -24,7 +24,7 @@ const OfferDetails = () => {
         setOffer(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.response);
+        console.log(error.message);
       }
     };
     fetchData();

@@ -27,7 +27,7 @@ const Home = () => {
         setOffers(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error.response);
+        console.log(error.message);
       }
     };
     fetchData();
@@ -50,39 +50,39 @@ const Home = () => {
         {isLoading ? (
           <p className="is-loading">Chargement en cours</p>
         ) : (
-          <div className="offers-list">
-            {offers.offers.map((offer) => {
-              return <MiniOffer key={offer._id} offer={offer} />;
-            })}
-          </div>
+          <>
+            <div className="offers-list">
+              {offers.offers.map((offer) => {
+                return <MiniOffer key={offer._id} offer={offer} />;
+              })}
+            </div>
+            <div className="handle-page container">
+              {page > 1 && (
+                <button
+                  onClick={() => {
+                    if (page > 1) {
+                      setPage(page - 1);
+                    }
+                  }}
+                >
+                  {"<"}
+                </button>
+              )}
+              <span>{`  ${page}/${nbPages}  `}</span>
+              {page < nbPages && (
+                <button
+                  onClick={() => {
+                    if (page < nbPages) {
+                      setPage(page + 1);
+                    }
+                  }}
+                >
+                  {">"}
+                </button>
+              )}
+            </div>
+          </>
         )}
-      </section>
-      <section className="handle-page container">
-        <>
-          {page > 1 && (
-            <button
-              onClick={() => {
-                if (page > 1) {
-                  setPage(page - 1);
-                }
-              }}
-            >
-              {"<"}
-            </button>
-          )}
-          <span>{`  ${page}/${nbPages}  `}</span>
-          {page < nbPages && (
-            <button
-              onClick={() => {
-                if (page < nbPages) {
-                  setPage(page + 1);
-                }
-              }}
-            >
-              {">"}
-            </button>
-          )}
-        </>
       </section>
     </>
   );
