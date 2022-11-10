@@ -6,7 +6,7 @@ import axios from "axios";
 
 import avatarDefault from "../img/avatar2.png";
 
-const SignUp = () => {
+const SignUp = ({ handleToken }) => {
   // STATES
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
@@ -35,9 +35,8 @@ const SignUp = () => {
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/signup",
           formData
         );
-        console.log("token = ", response.data);
         setResult("Félicitation, votre compte a bien été créé.");
-
+        handleToken(response.data.token, name);
         setTimeout(returnHome, 2000);
       } catch (error) {
         console.log("erreur 1 : ", error.message);
@@ -95,7 +94,9 @@ const SignUp = () => {
           avoir au moins 18 ans.
         </p>
       </div>
-      <button type="submit">S'inscrire</button>
+      <button type="submit" className="validation">
+        S'inscrire
+      </button>
       <Link to="/login">
         <p className="link">Tu as déjà un compte ? Connecte toi !</p>
       </Link>

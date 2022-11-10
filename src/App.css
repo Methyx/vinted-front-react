@@ -43,6 +43,11 @@ header .right {
   width: calc(50% - 150px);
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+header .right .user {
+  margin-right: 15px;
+  color: chocolate;
 }
 header button {
   width: 115px;
@@ -308,7 +313,7 @@ header button:last-child {
   border-radius: 8px;
   font-size: 18px;
 }
-.signup button:hover {
+.signup .validation:hover {
   cursor: pointer;
 }
 .signup .link {

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ handleToken }) => {
   // STATES
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +26,8 @@ const Login = () => {
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/login",
           user
         );
-        console.log("token = ", response.data);
-
+        console.log(response.data);
+        handleToken(response.data.token, response.data.account.username);
         navigate("/");
       } catch (error) {
         console.log("erreur 1 : ", error.message);
@@ -62,7 +62,9 @@ const Login = () => {
           setPassword(event.target.value);
         }}
       />
-      <button type="submit">Se connecter</button>
+      <button type="submit" className="validation">
+        Se connecter
+      </button>
       <Link to="/signup">
         <p className="link">Pas encore de compte ? Inscris toi !</p>
       </Link>

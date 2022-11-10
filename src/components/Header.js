@@ -2,7 +2,7 @@ import logoVinted from "../img/Vinted-logo.png";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ token, handleToken, userName }) => {
   // Init
   const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ const Header = () => {
     setInputSearch("");
   };
 
+  // return HERE
   return (
     <header>
       <div className="container content">
@@ -35,20 +36,35 @@ const Header = () => {
           </form>
         </div>
         <div className="right">
-          <button
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
-            S'inscrire
-          </button>
-          <button
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Se connecter
-          </button>
+          {token ? (
+            <>
+              <span className="user">{userName}</span>
+              <button
+                onClick={() => {
+                  handleToken(null);
+                }}
+              >
+                Se déconnecter
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                S'inscrire
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Se connecter
+              </button>
+            </>
+          )}
           <button>Vends tes articles</button>
         </div>
       </div>
