@@ -1,6 +1,6 @@
 import logoVinted from "../img/Vinted-logo.png";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Header = ({ token, handleToken, userName }) => {
   // Init
@@ -21,7 +21,9 @@ const Header = ({ token, handleToken, userName }) => {
     <header>
       <div className="container content">
         <div className="left">
-          <img src={logoVinted} alt="logo vinted" />
+          <Link to="/">
+            <img src={logoVinted} alt="logo vinted" />
+          </Link>
         </div>
         <div className="center">
           <form onSubmit={handleSubmitSearch}>

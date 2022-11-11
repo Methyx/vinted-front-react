@@ -23,6 +23,9 @@ header .content {
 header .left {
   width: 150px;
 }
+header .left:hover {
+  cursor: pointer;
+}
 header .center {
   width: 50%;
 }

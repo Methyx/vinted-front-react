@@ -9,9 +9,6 @@ const OfferDetails = () => {
   // USESTATES
   const [offer, setOffer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [id] = useState(useParams());
-
-  // functions
 
   // start HERE
   useEffect(() => {
@@ -30,6 +27,9 @@ const OfferDetails = () => {
     fetchData();
   }, [id]);
 
+  // init
+  const caracteristics = [];
+
   // RETURN Here
   return (
     <>
@@ -47,32 +47,19 @@ const OfferDetails = () => {
               <h1>{offer.product_price.toFixed(2)} €</h1>
               <div className="main-details">
                 <section className="title">
-                  <p>MARQUE</p>
-                  <p>TAILLE</p>
-                  <p>ETAT</p>
-                  <p>COULEUR</p>
-                  <p>EMPLACEMENT</p>
-                  <p>MODE DE PAIEMENT</p>
+                  {caracteristics.map((item, index) => {
+                    return <p>{item.name}</p>;
+                  })}
+                  {offer.product_details.map((item, index) => {
+                    const key = Object.keys(item)[0];
+                    caracteristics.push(item[key]);
+                    return <p key={index}>{key}</p>;
+                  })}
                 </section>
                 <section className="information">
-                  {offer.product_details[2]?.MARQUE && (
-                    <p>{offer.product_details[2].MARQUE}</p>
-                  )}
-                  {offer.product_details[4]?.TAILLE && (
-                    <p>{offer.product_details[4].TAILLE}</p>
-                  )}
-                  {offer.product_details[0]?.ETAT && (
-                    <p>{offer.product_details[0].ETAT}</p>
-                  )}
-                  {offer.product_details[3]?.COULEUR && (
-                    <p>{offer.product_details[3].COULEUR}</p>
-                  )}
-                  {offer.product_details[1]?.EMPLACEMENT && (
-                    <p>{offer.product_details[1].EMPLACEMENT}</p>
-                  )}
-                  {offer.product_details[5] && (
-                    <p>{offer.product_details[5]["MODE DE PAIEMENT"]}</p>
-                  )}
+                  {caracteristics.map((item, index) => {
+                    return <p key={index}>{item}</p>;
+                  })}
                 </section>
               </div>
               <h2>{offer.product_name && offer.product_name}</h2>

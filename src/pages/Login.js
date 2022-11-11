@@ -26,13 +26,17 @@ const Login = ({ handleToken }) => {
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/login",
           user
         );
-        console.log(response.data);
-        handleToken(response.data.token, response.data.account.username);
-        navigate("/");
+        // console.log(response.data);
+        if (response.data.token) {
+          handleToken(response.data.token, response.data.account.username);
+          navigate("/");
+        } else {
+          setError("Désolé, une erreur s'est produite. Veuillez réessayer SVP");
+        }
       } catch (error) {
         console.log("erreur 1 : ", error.message);
         if (error.response?.data.message === "Unauthorized") {
-          setError("Attention, ces données ne correspondent à aucun compte");
+          setError("Ces données ne correspondent à aucun compte");
         }
       }
     };
@@ -62,13 +66,13 @@ const Login = ({ handleToken }) => {
           setPassword(event.target.value);
         }}
       />
+      {error && <p className="info">{error}</p>}
       <button type="submit" className="validation">
         Se connecter
       </button>
       <Link to="/signup">
         <p className="link">Pas encore de compte ? Inscris toi !</p>
       </Link>
-      {error && <p className="info">{error}</p>}
     </form>
   );
 };

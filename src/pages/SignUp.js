@@ -25,23 +25,32 @@ const SignUp = ({ handleToken }) => {
     const fetchData = async () => {
       const formData = new FormData();
       setResult("");
-      formData.append("username", name);
-      formData.append("email", mail);
-      formData.append("password", password);
-      formData.append("newsletter", newsLetter);
-      formData.append("picture", avatarDefault);
+      if (name && mail && password) {
+        formData.append("username", name);
+        formData.append("email", mail);
+        formData.append("password", password);
+        formData.append("newsletter", newsLetter);
+        formData.append("picture", avatarDefault);
+      } else {
+        setResult("Veuillez remplir tous les champs, SVP");
+        return;
+      }
       try {
         const response = await axios.post(
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/signup",
           formData
         );
-        setResult("Félicitation, votre compte a bien été créé.");
-        handleToken(response.data.token, name);
-        setTimeout(returnHome, 2000);
+        if (response.data.token) {
+          setResult("Félicitation, votre compte a bien été créé.");
+          handleToken(response.data.token, name);
+          setTimeout(returnHome, 2000);
+        } else {
+          setResult("Désolé, un problème a eu lieu. Veuillez réessayez SVP");
+        }
       } catch (error) {
         console.log("erreur 1 : ", error.message);
         if (error.response?.data.message === "email already exists") {
-          setResult("Impossible : Cet email existe déjà !");
+          setResult("Désolé : Cet email existe déjà !");
         }
       }
     };
@@ -84,7 +93,7 @@ const SignUp = ({ handleToken }) => {
         <input
           className="check"
           type="checkbox"
-          value={newsLetter}
+          checked={newsLetter}
           onChange={(event) => setNewsletter(!newsLetter)}
         ></input>
         <span>S'inscrire à notre NewsLetter</span>
@@ -94,13 +103,13 @@ const SignUp = ({ handleToken }) => {
           avoir au moins 18 ans.
         </p>
       </div>
+      {result && <p className="info">{result}</p>}
       <button type="submit" className="validation">
         S'inscrire
       </button>
       <Link to="/login">
         <p className="link">Tu as déjà un compte ? Connecte toi !</p>
       </Link>
-      {result && <p className="info">{result}</p>}
     </form>
   );
 };

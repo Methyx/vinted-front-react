@@ -22,11 +22,18 @@ const MiniOffer = ({ offer }) => {
         {offer.product_price && (
           <p className="price">{offer.product_price.toFixed(2)} €</p>
         )}
-        {offer.product_details[4]?.TAILLE && (
-          <p className="details">{offer.product_details[4].TAILLE}</p>
-        )}
-        {offer.product_details[2]?.MARQUE}
-        <p className="details">{offer.product_details[2].MARQUE}</p>
+        {offer.product_details.map((item, index) => {
+          const key = Object.keys(item)[0];
+          if (key === "TAILLE" || key === "MARQUE") {
+            return (
+              <p className="details" key={index}>
+                {item[key]}
+              </p>
+            );
+          } else {
+            return null;
+          }
+        })}
       </div>
     </Link>
   );
