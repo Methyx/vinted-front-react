@@ -32,16 +32,6 @@ header .center {
 header img {
   height: 40px;
 }
-header input {
-  width: 90%;
-  background-color: #f5f6f7;
-  height: 40px;
-  /* width: 630px; */
-  border: none;
-  border-radius: 8px;
-  padding: 0 15px;
-  font-size: 16px;
-}
 header .right {
   width: calc(50% - 150px);
   display: flex;
@@ -70,6 +60,33 @@ header button:last-child {
   background-color: #22b1ba;
   color: white;
   margin-left: 30px;
+}
+/* HEADER - Search Form */
+.search-form .top input {
+  width: 90%;
+  background-color: #f5f6f7;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.search-form .bottom {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-form .check {
+  width: 30%;
+  font-size: 14px;
+}
+.search-form .check input {
+  width: 20px;
+}
+.search-form input {
+  width: 30%;
 }
 
 /* HOME */
@@ -259,6 +276,7 @@ header button:last-child {
 .offer-description .owner img {
   width: 50px;
   height: 50px;
+  object-fit: cover;
   border-radius: 50%;
   margin-right: 25px;
 }
@@ -341,13 +359,33 @@ header button:last-child {
 
 @media (max-width: 800px) {
   header .content {
-    flex-wrap: wrap;
+    height: 160px;
+    display: block;
+    /* flex-direction: column;
+    justify-content: space-around; */
   }
-  header .center {
-    width: calc(100% - 150px);
+  header img {
+    height: 35px;
   }
   header .right {
     width: 100%;
+  }
+  header .center {
+    display: inline-block;
+    width: calc(100% - 100px);
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  header .left {
+    display: inline-block;
+    width: 100px;
+  }
+  .search-form .top input {
+    font-size: 14px;
+    height: 30px;
+  }
+  .search-form .bottom .check {
+    font-size: 12px;
   }
   .mini-offer .product-img {
     height: 320px;

@@ -6,32 +6,58 @@ import { useState, useEffect } from "react";
 
 import MiniOffer from "../components/MiniOffer";
 
-const Home = () => {
-  // USESTATES
+const Home = ({ sortParams, page, setPage }) => {
+  // USESTATES du composant
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
+
+  // récupération des STATES passés en params
+  const inputSearch = sortParams.text[0];
+  const descendingPrices = sortParams.priceSort[0];
+  const minPrice = sortParams.priceMin[0];
+  const maxPrice = sortParams.priceMax[0];
 
   // start HERE
 
   useEffect(() => {
     const fetchData = async () => {
-      const url =
-        "https://site--backend-vinted--gw6mlgwnmzwz.code.run/offers?page=" +
-        page;
+      // construction de la requete
+      let url = "https://site--backend-vinted--gw6mlgwnmzwz.code.run/offers";
+      //      page à afficher
+      url += "?page=" + page;
+      //      texte à rechercher (dans titre ou description)
+      if (inputSearch) {
+        url += "&title=" + inputSearch;
+        url += "&description=" + inputSearch;
+      }
+      //      prix minimum
+      if (Number(minPrice) > 0) {
+        url += "&priceMin=" + minPrice;
+      }
+      if (Number(maxPrice) > 0) {
+        url += "&priceMax=" + maxPrice;
+      }
+      if (descendingPrices) {
+        url += "&sort=price-desc";
+      } else {
+        url += "&sort=price-asc";
+      }
+      console.log(url);
+      setIsLoading(true);
       try {
         const response = await axios.get(url);
         // const response = await axios.get(
         //   "https://lereacteur-vinted-api.herokuapp.com/offers"
         // );
         setOffers(response.data);
+        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, inputSearch, minPrice, maxPrice, descendingPrices]);
 
   const nbPages = Math.ceil(offers.count / 5);
 
