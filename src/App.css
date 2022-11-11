@@ -1,3 +1,6 @@
+.App {
+  position: relative;
+}
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -6,7 +9,6 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
-
 .is-loading {
   font-size: 25px;
   text-align: center;
@@ -293,20 +295,34 @@ header button:last-child {
   cursor: pointer;
 }
 
-/* SIGN-UP */
-.signup {
-  max-width: 400px;
-  height: 500px;
-  margin: 0 auto;
-  padding: 25px;
-  border: 2px solid lightgray;
+/* MODAL Général */
+.modal-root {
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.signup h1 {
+
+/* MODAL - Formulaires */
+.modal {
+  background-color: white;
+  max-width: 450px;
+  height: 550px;
+  margin: 0 auto;
+  /* padding: 25px; */
+  /* border: 2px solid lightgray; */
+}
+.modal h1 {
   font-size: 26px;
   margin-bottom: 20px;
   text-align: center;
 }
-.signup .text {
+.modal .text {
   height: 40px;
   width: 80%;
   margin: 10px 10%;
@@ -314,13 +330,13 @@ header button:last-child {
   border: none;
   border-bottom: 1px solid lightcoral;
 }
-.signup .newsletter {
+.modal .newsletter {
   width: 80%;
   margin: 40px 10%;
   margin-top: 20px;
   color: gray;
 }
-.signup .check {
+.modal .check {
   transform: scale(200%);
   margin-right: 20px;
 }
@@ -328,7 +344,7 @@ header button:last-child {
   margin-top: 15px;
   font-size: 14px;
 }
-.signup button {
+.modal button:not(:first-child) {
   width: 80%;
   height: 40px;
   margin: 20px 10%;
@@ -338,23 +354,22 @@ header button:last-child {
   border-radius: 8px;
   font-size: 18px;
 }
-.signup .validation:hover {
+.modal .validation:hover {
   cursor: pointer;
 }
-.signup .link {
+.modal .link {
   font-size: 13px;
   color: #22b1ba;
   text-align: center;
 }
-.signup a {
-  text-decoration: none;
+.modal .link:hover {
+  cursor: pointer;
 }
-.signup .info {
+.modal .info {
   margin-top: 15px;
   text-align: center;
   color: blueviolet;
 }
-
 /* RESPONSIVE */
 
 @media (max-width: 800px) {
@@ -387,12 +402,18 @@ header button:last-child {
   .search-form .bottom .check {
     font-size: 12px;
   }
+  .mini-offer-container {
+    height: 400px;
+  }
   .mini-offer .product-img {
-    height: 320px;
+    height: 300px;
   }
 }
 @media (max-width: 700px) {
+  .mini-offer-container {
+    height: 350px;
+  }
   .mini-offer .product-img {
-    height: 300px;
+    height: 250px;
   }
 }

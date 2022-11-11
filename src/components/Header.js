@@ -1,12 +1,19 @@
 import logoVinted from "../img/Vinted-logo.png";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Components
 import SearchOffers from "./SearchOffers";
 
-const Header = ({ token, handleToken, userName, sortParams, setPage }) => {
+const Header = ({
+  token,
+  handleToken,
+  userName,
+  sortParams,
+  setPage,
+  modalVisible,
+  setModalVisible,
+}) => {
   // Init
-  const navigate = useNavigate();
 
   // return HERE
   return (
@@ -39,14 +46,16 @@ const Header = ({ token, handleToken, userName, sortParams, setPage }) => {
             <>
               <button
                 onClick={() => {
-                  navigate("/signup");
+                  setModalVisible("signup");
+                  // navigate("/signup");
                 }}
               >
                 S'inscrire
               </button>
               <button
                 onClick={() => {
-                  navigate("/login");
+                  setModalVisible("login");
+                  // navigate("/login");
                 }}
               >
                 Se connecter

@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
 import avatarDefault from "../img/avatar2.png";
 
-const SignUp = ({ handleToken }) => {
+const SignUp = ({ handleToken, setModalVisible }) => {
   // STATES
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
@@ -15,10 +14,10 @@ const SignUp = ({ handleToken }) => {
   const [result, setResult] = useState("");
 
   // INIT
-  const navigate = useNavigate();
-  const returnHome = () => {
-    navigate("/");
-  };
+  // const navigate = useNavigate();
+  // const returnHome = () => {
+  //   setModalVisible("");
+  // };
 
   // functions
   const handleSubmit = (event) => {
@@ -43,7 +42,9 @@ const SignUp = ({ handleToken }) => {
         if (response.data.token) {
           setResult("Félicitation, votre compte a bien été créé.");
           handleToken(response.data.token, name);
-          setTimeout(returnHome, 2000);
+          setTimeout(() => {
+            setModalVisible("");
+          }, 2000);
         } else {
           setResult("Désolé, un problème a eu lieu. Veuillez réessayez SVP");
         }
@@ -60,7 +61,7 @@ const SignUp = ({ handleToken }) => {
 
   // RETURN
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <form className="modal" onSubmit={handleSubmit}>
       <h1>S'inscrire</h1>
       <input
         className="text"
@@ -107,9 +108,15 @@ const SignUp = ({ handleToken }) => {
       <button type="submit" className="validation">
         S'inscrire
       </button>
-      <Link to="/login">
-        <p className="link">Tu as déjà un compte ? Connecte toi !</p>
-      </Link>
+
+      <p
+        onClick={() => {
+          setModalVisible("login");
+        }}
+        className="link"
+      >
+        Tu as déjà un compte ? Connecte toi !
+      </p>
     </form>
   );
 };

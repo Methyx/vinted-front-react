@@ -28,7 +28,7 @@ const Home = ({ sortParams, page, setPage }) => {
       //      texte à rechercher (dans titre ou description)
       if (inputSearch) {
         url += "&title=" + inputSearch;
-        url += "&description=" + inputSearch;
+        // url += "&description=" + inputSearch;
       }
       //      prix minimum
       if (Number(minPrice) > 0) {
@@ -50,7 +50,7 @@ const Home = ({ sortParams, page, setPage }) => {
         //   "https://lereacteur-vinted-api.herokuapp.com/offers"
         // );
         setOffers(response.data);
-        console.log(response.data);
+        // console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -77,11 +77,6 @@ const Home = ({ sortParams, page, setPage }) => {
           <p className="is-loading">Chargement en cours</p>
         ) : (
           <>
-            <div className="offers-list">
-              {offers.offers.map((offer) => {
-                return <MiniOffer key={offer._id} offer={offer} />;
-              })}
-            </div>
             <div className="handle-page container">
               {page > 1 && (
                 <button
@@ -106,6 +101,11 @@ const Home = ({ sortParams, page, setPage }) => {
                   {">"}
                 </button>
               )}
+            </div>
+            <div className="offers-list">
+              {offers.offers.map((offer) => {
+                return <MiniOffer key={offer._id} offer={offer} />;
+              })}
             </div>
           </>
         )}

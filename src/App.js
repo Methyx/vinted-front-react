@@ -6,11 +6,12 @@ import Cookies from "js-cookie";
 // Pages
 import Home from "./pages/Home";
 import OfferDetails from "./pages/OfferDetails";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
 
 // Components
 import Header from "./components/Header";
+import Modal from "./components/Modal";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 
 function App() {
   // UseStates
@@ -21,6 +22,8 @@ function App() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [page, setPage] = useState(1);
+  const [modalVisible, setModalVisible] = useState("");
+
   // Init d'un tableau de params pour passer en props
   const sortParams = {
     text: [inputSearch, setInputSearch],
@@ -51,6 +54,8 @@ function App() {
         userName={userName}
         sortParams={sortParams}
         setPage={setPage}
+        modaVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
       <Routes>
         <Route
@@ -69,6 +74,13 @@ function App() {
           element={<Login handleToken={handleToken} />}
         ></Route>
       </Routes>
+      {modalVisible && (
+        <Modal
+          handleToken={handleToken}
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
+      )}
     </Router>
   );
 }

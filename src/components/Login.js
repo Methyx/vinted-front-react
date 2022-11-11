@@ -1,17 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-const Login = ({ handleToken }) => {
+const Login = ({ handleToken, setModalVisible }) => {
   // STATES
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  // INIT
-  const navigate = useNavigate();
 
   // functions
   const handleSubmit = (event) => {
@@ -29,7 +24,7 @@ const Login = ({ handleToken }) => {
         // console.log(response.data);
         if (response.data.token) {
           handleToken(response.data.token, response.data.account.username);
-          navigate("/");
+          setModalVisible("");
         } else {
           setError("Désolé, une erreur s'est produite. Veuillez réessayer SVP");
         }
@@ -46,7 +41,7 @@ const Login = ({ handleToken }) => {
 
   // RETURN
   return (
-    <form className="signup" onSubmit={handleSubmit}>
+    <form className="modal" onSubmit={handleSubmit}>
       <h1>Se connecter</h1>
       <input
         className="text"
@@ -70,9 +65,15 @@ const Login = ({ handleToken }) => {
       <button type="submit" className="validation">
         Se connecter
       </button>
-      <Link to="/signup">
-        <p className="link">Pas encore de compte ? Inscris toi !</p>
-      </Link>
+
+      <p
+        onClick={() => {
+          setModalVisible("signup");
+        }}
+        className="link"
+      >
+        Pas encore de compte ? Inscris toi !
+      </p>
     </form>
   );
 };
