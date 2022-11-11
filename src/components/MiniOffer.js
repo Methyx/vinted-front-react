@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MiniOffer = ({ offer }) => {
   return (
-    <Link to={`/offer/${offer._id}`}>
+    <Link to={`/offer/${offer._id}`} className="mini-offer-container">
       <div className="mini-offer">
         {offer.owner && (
           <div className="owner">
