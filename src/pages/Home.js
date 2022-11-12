@@ -95,8 +95,10 @@ const Home = ({ sortParams, page, setPage }) => {
                 type="number"
                 value={nbOffersPerPage}
                 onChange={(event) => {
-                  if (event.target.value >= 1) {
+                  if (event.target.value >= 0) {
                     setNbOffersPerPage(event.target.value);
+                  } else {
+                    setNbOffersPerPage(0);
                   }
                 }}
               />
