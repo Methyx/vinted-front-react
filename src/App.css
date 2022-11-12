@@ -14,8 +14,15 @@ body {
   text-align: center;
   margin: 25px 0;
 }
+
 /* HEADER */
 
+/* header {
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 1;
+} */
 header .content {
   height: 120px;
   display: flex;
@@ -95,12 +102,13 @@ header button:last-child {
 /* HOME :    HERO */
 
 .home-hero {
-  height: 450px;
+  /* height: 450px; */
+  height: 300px;
   position: relative;
   margin-bottom: 40px;
 }
 .home-hero .ban {
-  height: 450px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -112,7 +120,7 @@ header button:last-child {
 .home-hero .action-box {
   box-sizing: border-box;
   width: min(410px, 80%);
-  height: 270px;
+  height: 50%;
   background-color: white;
   padding: 25px;
   position: absolute;
@@ -123,7 +131,8 @@ header button:last-child {
   justify-content: space-around;
 }
 .action-box p {
-  font-size: 34px;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 .action-box button {
   width: 50%;
@@ -139,9 +148,19 @@ header button:last-child {
 }
 
 /* HOME */
+/*        NbOffersPerPage */
+.nb-offers-container {
+  text-align: right;
+  color: gray;
+  font-size: 14px;
+}
+.nb-offers-container input {
+  width: 50px;
+}
+
 /*        Offers List */
 .offers-list {
-  margin: 40px 0;
+  margin: 20px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -401,6 +420,12 @@ header button:last-child {
   }
   .search-form .bottom .check {
     font-size: 12px;
+  }
+  .home-hero {
+    height: 250px;
+  }
+  .action-box p {
+    font-size: 24px;
   }
   .mini-offer-container {
     height: 400px;

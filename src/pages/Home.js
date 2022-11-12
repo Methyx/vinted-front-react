@@ -10,6 +10,7 @@ const Home = ({ sortParams, page, setPage }) => {
   // USESTATES du composant
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [nbOffersPerPage, setNbOffersPerPage] = useState(10);
 
   // récupération des STATES passés en params
   const inputSearch = sortParams.text[0];
@@ -30,19 +31,23 @@ const Home = ({ sortParams, page, setPage }) => {
         url += "&title=" + inputSearch;
         // url += "&description=" + inputSearch;
       }
-      //      prix minimum
+      //      prix minimum / maximum
       if (Number(minPrice) > 0) {
         url += "&priceMin=" + minPrice;
       }
       if (Number(maxPrice) > 0) {
         url += "&priceMax=" + maxPrice;
       }
+      //      prix ascending / descending
       if (descendingPrices) {
         url += "&sort=price-desc";
       } else {
         url += "&sort=price-asc";
       }
-      console.log(url);
+      //     Nombre d'offres par page
+      url += "&nbOffersPerPage=" + nbOffersPerPage;
+
+      // console.log(url);
       setIsLoading(true);
       try {
         const response = await axios.get(url);
@@ -57,9 +62,16 @@ const Home = ({ sortParams, page, setPage }) => {
       }
     };
     fetchData();
-  }, [page, inputSearch, minPrice, maxPrice, descendingPrices]);
+  }, [
+    page,
+    inputSearch,
+    minPrice,
+    maxPrice,
+    descendingPrices,
+    nbOffersPerPage,
+  ]);
 
-  const nbPages = Math.ceil(offers.count / 5);
+  const nbPages = Math.ceil(offers.count / nbOffersPerPage);
 
   // RETURN Here
   return (
@@ -77,6 +89,23 @@ const Home = ({ sortParams, page, setPage }) => {
           <p className="is-loading">Chargement en cours</p>
         ) : (
           <>
+            <div className="nb-offers-container">
+              <span>Nombre d'offres par page : </span>
+              <input
+                type="number"
+                value={nbOffersPerPage}
+                onChange={(event) => {
+                  if (event.target.value >= 1) {
+                    setNbOffersPerPage(event.target.value);
+                  }
+                }}
+              />
+            </div>
+            <div className="offers-list">
+              {offers.offers.map((offer) => {
+                return <MiniOffer key={offer._id} offer={offer} />;
+              })}
+            </div>
             <div className="handle-page container">
               {page > 1 && (
                 <button
@@ -101,11 +130,6 @@ const Home = ({ sortParams, page, setPage }) => {
                   {">"}
                 </button>
               )}
-            </div>
-            <div className="offers-list">
-              {offers.offers.map((offer) => {
-                return <MiniOffer key={offer._id} offer={offer} />;
-              })}
             </div>
           </>
         )}

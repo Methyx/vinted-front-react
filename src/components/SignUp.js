@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 import avatarDefault from "../img/avatar2.png";
+import convertToBase64 from "../functions/convertToBase64";
 
 const SignUp = ({ handleToken, setModalVisible }) => {
   // STATES
@@ -29,7 +30,7 @@ const SignUp = ({ handleToken, setModalVisible }) => {
         formData.append("email", mail);
         formData.append("password", password);
         formData.append("newsletter", newsLetter);
-        formData.append("picture", avatarDefault);
+        formData.append("picture", convertToBase64(avatarDefault));
       } else {
         setResult("Veuillez remplir tous les champs, SVP");
         return;
