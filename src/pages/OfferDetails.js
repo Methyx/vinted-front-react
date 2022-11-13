@@ -1,6 +1,7 @@
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+import fetchDataOffer from "../functions/fetchDataOffer";
 
 const OfferDetails = () => {
   // PARAMS
@@ -12,19 +13,7 @@ const OfferDetails = () => {
 
   // start HERE
   useEffect(() => {
-    const fetchData = async () => {
-      //eslint - disable - next - line;
-      const url =
-        "https://site--backend-vinted--gw6mlgwnmzwz.code.run/offer/" + id;
-      try {
-        const response = await axios.get(url);
-        setOffer(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchData();
+    fetchDataOffer(id, setOffer, setIsLoading);
   }, [id]);
 
   // init

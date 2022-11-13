@@ -1,10 +1,15 @@
+//ressources
 import banner from "../img/banner-wide.jpg";
 import tear from "../img/tear.svg";
 
-import axios from "axios";
+//init
 import { useState, useEffect } from "react";
 
+// Components
 import MiniOffer from "../components/MiniOffer";
+
+//functions
+import fetchDataHome from "../functions/fetchDataHome";
 
 const Home = ({ sortParams, page, setPage }) => {
   // USESTATES du composant
@@ -21,47 +26,16 @@ const Home = ({ sortParams, page, setPage }) => {
   // start HERE
 
   useEffect(() => {
-    const fetchData = async () => {
-      // construction de la requete
-      let url = "https://site--backend-vinted--gw6mlgwnmzwz.code.run/offers";
-      //      page à afficher
-      url += "?page=" + page;
-      //      texte à rechercher (dans titre ou description)
-      if (inputSearch) {
-        url += "&title=" + inputSearch;
-        // url += "&description=" + inputSearch;
-      }
-      //      prix minimum / maximum
-      if (Number(minPrice) > 0) {
-        url += "&priceMin=" + minPrice;
-      }
-      if (Number(maxPrice) > 0) {
-        url += "&priceMax=" + maxPrice;
-      }
-      //      prix ascending / descending
-      if (descendingPrices) {
-        url += "&sort=price-desc";
-      } else {
-        url += "&sort=price-asc";
-      }
-      //     Nombre d'offres par page
-      url += "&nbOffersPerPage=" + nbOffersPerPage;
-
-      // console.log(url);
-      setIsLoading(true);
-      try {
-        const response = await axios.get(url);
-        // const response = await axios.get(
-        //   "https://lereacteur-vinted-api.herokuapp.com/offers"
-        // );
-        setOffers(response.data);
-        // console.log(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchData();
+    fetchDataHome(
+      page,
+      inputSearch,
+      minPrice,
+      maxPrice,
+      descendingPrices,
+      nbOffersPerPage,
+      setIsLoading,
+      setOffers
+    );
   }, [
     page,
     inputSearch,
@@ -90,18 +64,23 @@ const Home = ({ sortParams, page, setPage }) => {
         ) : (
           <>
             <div className="nb-offers-container">
-              <span>Nombre d'offres par page : </span>
-              <input
-                type="number"
-                value={nbOffersPerPage}
-                onChange={(event) => {
-                  if (event.target.value >= 0) {
-                    setNbOffersPerPage(event.target.value);
-                  } else {
-                    setNbOffersPerPage(0);
-                  }
-                }}
-              />
+              <span>Nombre d'offres : {offers.count}</span>
+              <div>
+                <span>Nombre d'offres par page : </span>
+                <input
+                  type="number"
+                  value={nbOffersPerPage}
+                  onChange={(event) => {
+                    if (event.target.value >= 0) {
+                      setNbOffersPerPage(event.target.value);
+                      setPage(1);
+                    } else {
+                      setNbOffersPerPage(0);
+                      setPage(1);
+                    }
+                  }}
+                />
+              </div>
             </div>
             <div className="offers-list">
               {offers.offers.map((offer) => {

@@ -150,9 +150,10 @@ header button:last-child {
 /* HOME */
 /*        NbOffersPerPage */
 .nb-offers-container {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
   color: gray;
-  font-size: 14px;
+  font-size: 12px;
 }
 .nb-offers-container input {
   width: 50px;
