@@ -33,12 +33,13 @@ const SearchOffers = ({ sortParams, setPage }) => {
       </div>
       <div className="bottom">
         <div className="check">
-          <span>↘</span>
+          <span>↗</span>
           <FormControlLabel
             control={
               <Switch
-                defaultChecked
+                // defaultChecked
                 value={descendingPrices}
+                size="small"
                 onChange={(event) => {
                   setDescendingPrices(!descendingPrices);
                   setPage(1);
@@ -48,15 +49,18 @@ const SearchOffers = ({ sortParams, setPage }) => {
             label="prix"
             labelPlacement="top"
           />
-          <span>↗</span>
+          <span>↘</span>
         </div>
         <div className="slider">
-          <Box sx={{ width: 200 }}>
+          <p>Fourchette de prix</p>
+          <br></br>
+          <Box sx={{ width: 8 / 10 }}>
             <Slider
               value={[minPrice, maxPrice]}
               min={0}
               max={1000}
               step={50}
+              size="small"
               onChange={(event) => {
                 setMinPrice(event.target.value[0]);
                 setMaxPrice(event.target.value[1]);
@@ -65,7 +69,6 @@ const SearchOffers = ({ sortParams, setPage }) => {
               valueLabelDisplay="on"
             />
           </Box>
-          <p>Fourchette de prix</p>
         </div>
       </div>
     </form>

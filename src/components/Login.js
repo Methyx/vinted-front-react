@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -8,6 +9,8 @@ const Login = ({ handleToken, setModalVisible }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  //Init
+  const navigate = useNavigate();
   // functions
   const handleSubmit = (event) => {
     const fetchData = async () => {
@@ -74,6 +77,14 @@ const Login = ({ handleToken, setModalVisible }) => {
       >
         Pas encore de compte ? Inscris toi !
       </p>
+      <h6
+        onClick={() => {
+          setModalVisible("");
+          navigate("/");
+        }}
+      >
+        retour sur la page d'accueil
+      </h6>
     </form>
   );
 };

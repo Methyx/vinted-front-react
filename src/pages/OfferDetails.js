@@ -58,6 +58,7 @@ const OfferDetails = ({ setCreateOffer }) => {
                 slidesToSlide={1}
                 swipeable={true}
                 containerClass="carousel-container"
+                // itemClass="carousel-image-item"
                 deviceType={""}
               >
                 {offer.product_image.map((picture, index) => {
