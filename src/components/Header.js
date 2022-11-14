@@ -10,7 +10,7 @@ const Header = ({
   userName,
   sortParams,
   setPage,
-  modalVisible,
+  // modalVisible,
   setModalVisible,
 }) => {
   // Init

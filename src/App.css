@@ -17,16 +17,12 @@ body {
   margin: 25px 0;
 }
 
+/**/
 /* HEADER */
+/**/
 
-/* header {
-  position: sticky;
-  top: 0px;
-  background-color: white;
-  z-index: 1;
-} */
 header .content {
-  height: 120px;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,20 +80,18 @@ header button:last-child {
   margin-bottom: 10px;
 }
 .search-form .bottom {
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .search-form .check {
-  width: 30%;
+  width: 50%;
   font-size: 14px;
+  font-weight: bold;
 }
-.search-form .check input {
-  width: 20px;
-}
-.search-form input {
-  width: 30%;
+.search-form .slider {
+  width: 50%;
 }
 
 /* HOME */
@@ -401,11 +395,14 @@ header button:last-child {
   text-align: center;
   color: blueviolet;
 }
+
+/**/
 /* RESPONSIVE */
+/**/
 
 @media (max-width: 875px) {
   header .content {
-    height: 160px;
+    height: 200px;
     display: block;
     /* flex-direction: column;
     justify-content: space-around; */
@@ -455,7 +452,7 @@ header button:last-child {
     margin-bottom: 20px;
   }
   .offer-description {
-    width: 100%;
+    width: 90%;
     height: 500px;
   }
 }

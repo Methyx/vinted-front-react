@@ -19,8 +19,8 @@ function App() {
   const [userName, setUserName] = useState(Cookies.get("userName") || "");
   const [inputSearch, setInputSearch] = useState("");
   const [descendingPrices, setDescendingPrices] = useState(false);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
   const [page, setPage] = useState(1);
   const [modalVisible, setModalVisible] = useState("");
 
@@ -54,7 +54,7 @@ function App() {
         userName={userName}
         sortParams={sortParams}
         setPage={setPage}
-        modaVisible={modalVisible}
+        // modaVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
       <Routes>

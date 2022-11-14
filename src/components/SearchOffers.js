@@ -1,3 +1,8 @@
+import { FormControlLabel } from "@mui/material";
+import Switch from "@mui/material/Switch";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+
 const SearchOffers = ({ sortParams, setPage }) => {
   // récupération des STATES passés en params
   const [inputSearch, setInputSearch] = sortParams.text;
@@ -12,6 +17,7 @@ const SearchOffers = ({ sortParams, setPage }) => {
     setInputSearch("");
   };
 
+  // RETURN here
   return (
     <form onSubmit={handleSubmitSearch} className="search-form">
       <div className="top">
@@ -27,34 +33,40 @@ const SearchOffers = ({ sortParams, setPage }) => {
       </div>
       <div className="bottom">
         <div className="check">
-          <input
-            type="checkbox"
-            checked={descendingPrices}
-            onChange={() => {
-              setDescendingPrices(!descendingPrices);
-              setPage(1);
-            }}
+          <span>↘</span>
+          <FormControlLabel
+            control={
+              <Switch
+                defaultChecked
+                value={descendingPrices}
+                onChange={(event) => {
+                  setDescendingPrices(!descendingPrices);
+                  setPage(1);
+                }}
+              />
+            }
+            label="prix"
+            labelPlacement="top"
           />
-          <span>prix ↘</span>
+          <span>↗</span>
         </div>
-        <input
-          type="text"
-          placeholder="prix min"
-          value={minPrice}
-          onChange={(event) => {
-            setMinPrice(event.target.value);
-            setPage(1);
-          }}
-        />
-        <input
-          type="text"
-          placeholder="prix max"
-          value={maxPrice}
-          onChange={(event) => {
-            setMaxPrice(event.target.value);
-            setPage(1);
-          }}
-        />
+        <div className="slider">
+          <Box sx={{ width: 200 }}>
+            <Slider
+              value={[minPrice, maxPrice]}
+              min={0}
+              max={1000}
+              step={50}
+              onChange={(event) => {
+                setMinPrice(event.target.value[0]);
+                setMaxPrice(event.target.value[1]);
+                setPage(1);
+              }}
+              valueLabelDisplay="on"
+            />
+          </Box>
+          <p>Fourchette de prix</p>
+        </div>
       </div>
     </form>
   );
