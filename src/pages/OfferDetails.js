@@ -6,7 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 
 import fetchDataOffer from "../functions/fetchDataOffer";
 
-const OfferDetails = () => {
+const OfferDetails = ({ setCreateOffer }) => {
   // PARAMS
   const { id } = useParams();
   const responsive = {
@@ -35,6 +35,7 @@ const OfferDetails = () => {
 
   // init
   const caracteristics = [];
+  setCreateOffer(false);
 
   // RETURN Here
   return (

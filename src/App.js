@@ -10,8 +10,7 @@ import OfferDetails from "./pages/OfferDetails";
 // Components
 import Header from "./components/Header";
 import Modal from "./components/Modal";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import Publish from "./pages/Publish";
 
 function App() {
   // UseStates
@@ -23,6 +22,7 @@ function App() {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [page, setPage] = useState(1);
   const [modalVisible, setModalVisible] = useState("");
+  const [createOffer, setCreateOffer] = useState(false);
 
   // Init d'un tableau de params pour passer en props
   const sortParams = {
@@ -56,22 +56,32 @@ function App() {
         setPage={setPage}
         // modaVisible={modalVisible}
         setModalVisible={setModalVisible}
+        createOffer={createOffer}
       />
       <Routes>
         <Route
           path="/"
           element={
-            <Home sortParams={sortParams} page={page} setPage={setPage} />
+            <Home
+              sortParams={sortParams}
+              page={page}
+              setPage={setPage}
+              setCreateOffer={setCreateOffer}
+            />
           }
         ></Route>
-        <Route path="/offer/:id" element={<OfferDetails />}></Route>
         <Route
-          path="/signup"
-          element={<SignUp handleToken={handleToken} />}
+          path="/offer/:id"
+          element={<OfferDetails setCreateOffer={setCreateOffer} />}
         ></Route>
         <Route
-          path="/login"
-          element={<Login handleToken={handleToken} />}
+          path="/publish"
+          element={
+            <Publish
+              setModalVisible={setModalVisible}
+              setCreateOffer={setCreateOffer}
+            />
+          }
         ></Route>
       </Routes>
       {modalVisible && (

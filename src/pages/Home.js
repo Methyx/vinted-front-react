@@ -4,6 +4,7 @@ import tear from "../img/tear.svg";
 
 //init
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import MiniOffer from "../components/MiniOffer";
@@ -11,7 +12,7 @@ import MiniOffer from "../components/MiniOffer";
 //functions
 import fetchDataHome from "../functions/fetchDataHome";
 
-const Home = ({ sortParams, page, setPage }) => {
+const Home = ({ sortParams, page, setPage, setCreateOffer }) => {
   // USESTATES du composant
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +47,8 @@ const Home = ({ sortParams, page, setPage }) => {
   ]);
 
   const nbPages = Math.ceil(offers.count / nbOffersPerPage);
-
+  const navigate = useNavigate();
+  setCreateOffer(false);
   // RETURN Here
   return (
     <>
@@ -55,7 +57,13 @@ const Home = ({ sortParams, page, setPage }) => {
         <img className="tear" src={tear} alt="dechirure" />
         <div className="action-box container">
           <p>Prêts à faire du tri dans vos placards ?</p>
-          <button>Commencer à vendre</button>
+          <button
+            onClick={() => {
+              navigate("/publish");
+            }}
+          >
+            Commencer à vendre
+          </button>
         </div>
       </section>
       <section className="offers container">

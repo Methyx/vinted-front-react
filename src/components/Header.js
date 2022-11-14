@@ -1,5 +1,5 @@
 import logoVinted from "../img/Vinted-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Components
 import SearchOffers from "./SearchOffers";
@@ -12,8 +12,10 @@ const Header = ({
   setPage,
   // modalVisible,
   setModalVisible,
+  createOffer,
 }) => {
   // Init
+  const navigate = useNavigate();
 
   // return HERE
   return (
@@ -24,12 +26,14 @@ const Header = ({
             <img src={logoVinted} alt="logo vinted" />
           </Link>
         </section>
-        <section className="center">
-          <SearchOffers
-            sortParams={sortParams}
-            setPage={setPage}
-          ></SearchOffers>
-        </section>
+        {!createOffer && (
+          <section className="center">
+            <SearchOffers
+              sortParams={sortParams}
+              setPage={setPage}
+            ></SearchOffers>
+          </section>
+        )}
         <section className="right">
           {token ? (
             <>
@@ -62,7 +66,13 @@ const Header = ({
               </button>
             </>
           )}
-          <button>Vends tes articles</button>
+          <button
+            onClick={() => {
+              navigate("/publish");
+            }}
+          >
+            Vends tes articles
+          </button>
         </section>
       </div>
     </header>

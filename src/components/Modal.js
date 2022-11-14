@@ -1,7 +1,7 @@
 import SignUp from "./SignUp";
 import Login from "./Login";
 
-const ModalLogin = ({ handleToken, modalVisible, setModalVisible }) => {
+const Modal = ({ handleToken, modalVisible, setModalVisible }) => {
   return (
     <div
       className="modal-root"
@@ -41,4 +41,4 @@ const ModalLogin = ({ handleToken, modalVisible, setModalVisible }) => {
     </div>
   );
 };
-export default ModalLogin;
+export default Modal;
