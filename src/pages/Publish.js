@@ -66,20 +66,33 @@ const Publish = ({ setModalVisible, setMaskSearch }) => {
             <div className="new-offer-upload">
               <h2>Ajoute une photo</h2>
               <div className="upload-container">
-                <input
-                  type="file"
-                  //   multiple
-                  accept="image/*"
-                  onChange={(event) => {
-                    const tabKeys = Object.keys(event.target.files);
-                    console.log(tabKeys);
-                    const tabPictures = tabKeys.map((item) => {
-                      return event.target.files[item];
-                    });
-                    console.log(tabPictures);
-                    setPictures(tabPictures);
-                  }}
-                />
+                {pictures ? (
+                  <img
+                    src={URL.createObjectURL(pictures[0])}
+                    alt="product"
+                    className="object-img"
+                  ></img>
+                ) : (
+                  <>
+                    <label htmlFor="offer-picture">Choisis une image</label>
+                    <input
+                      id="offer-picture"
+                      type="file"
+                      style={{ display: "none" }}
+                      //   multiple
+                      accept="image/*"
+                      onChange={(event) => {
+                        const tabKeys = Object.keys(event.target.files);
+                        // console.log(tabKeys);
+                        const tabPictures = tabKeys.map((item) => {
+                          return event.target.files[item];
+                        });
+                        // console.log(tabPictures);
+                        setPictures(tabPictures);
+                      }}
+                    />
+                  </>
+                )}
               </div>
             </div>
             <div className="new-offer-description">

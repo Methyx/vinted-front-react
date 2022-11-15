@@ -351,14 +351,18 @@ header button:last-child {
   justify-content: center;
   align-items: center;
 }
-.new-offer .upload-container input {
-  width: 80%;
-  height: 50px;
-  color: #22b1ba;
-  background-color: white;
+.upload-container label {
+  padding: 15px;
+  border: 2px solid #22b1ba;
+  border-radius: 8px;
 }
-.new-offer .upload-container input:hover {
+.upload-container label:hover {
   cursor: pointer;
+}
+.upload-container img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 }
 .new-offer p,
 .new-offer input {
