@@ -80,6 +80,7 @@ const Login = ({ handleToken, setModalVisible }) => {
       <h6
         onClick={() => {
           setModalVisible("");
+          document.body.style.overflow = "auto";
           navigate("/");
         }}
       >
