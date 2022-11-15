@@ -53,7 +53,7 @@ const SearchOffers = ({ sortParams, setPage }) => {
         </div>
         <div className="slider">
           <p>Fourchette de prix</p>
-          <br></br>
+          {/* <br></br> */}
           <Box sx={{ width: 8 / 10 }}>
             <Slider
               value={[minPrice, maxPrice]}

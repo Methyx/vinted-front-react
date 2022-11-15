@@ -329,19 +329,6 @@ header button:last-child {
   cursor: pointer;
 }
 
-/* MODAL Général */
-.modal-root {
-  position: absolute;
-  height: 100%;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /**/
 /*  Publish new Offer */
 /**/
@@ -350,7 +337,7 @@ header button:last-child {
   padding: 15px 0;
 }
 .new-offer-upload {
-  width: 100%;
+  width: 90%;
   height: 250px;
   background-color: white;
 }
@@ -365,7 +352,7 @@ header button:last-child {
   align-items: center;
 }
 .new-offer .upload-container input {
-  width: 500px;
+  width: 80%;
   height: 50px;
   color: #22b1ba;
   background-color: white;
@@ -378,7 +365,7 @@ header button:last-child {
   font-size: 16px;
 }
 .new-offer div {
-  width: 100%;
+  width: 90%;
   background-color: white;
   margin: 30px 0;
   padding: 0 20px;
@@ -428,6 +415,19 @@ header button:last-child {
 /**/
 /* MODAL - Formulaires */
 /**/
+
+/* MODAL Général */
+.modal-root {
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .modal {
   background-color: white;
   max-width: 450px;
@@ -534,6 +534,13 @@ header button:last-child {
   .search-form .bottom .check {
     font-size: 12px;
   }
+  .search-form .slider {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .search-form .slider p {
+    font-size: 10px;
+  }
   .home-hero {
     height: 250px;
   }
@@ -558,6 +565,13 @@ header button:last-child {
   .offer-description {
     width: 90%;
     height: 500px;
+  }
+  .new-offer p,
+  .new-offer input {
+    font-size: 12px;
+  }
+  .new-offer .description textarea {
+    font-size: 12px;
   }
 }
 @media (max-width: 700px) {
