@@ -3,8 +3,8 @@ import { useState } from "react";
 
 import axios from "axios";
 
-import avatarDefault from "../img/avatar2.png";
-import convertToBase64 from "../functions/convertToBase64";
+// import avatarDefault from "../img/avatar2.png";
+// import convertToBase64 from "../functions/convertToBase64";
 
 const SignUp = ({ handleToken, setModalVisible }) => {
   // STATES
@@ -23,14 +23,21 @@ const SignUp = ({ handleToken, setModalVisible }) => {
   // functions
   const handleSubmit = (event) => {
     const fetchData = async () => {
-      const formData = new FormData();
       setResult("");
+      // const formData = new FormData();
+      let data = {};
       if (name && mail && password) {
-        formData.append("username", name);
-        formData.append("email", mail);
-        formData.append("password", password);
-        formData.append("newsletter", newsLetter);
-        formData.append("picture", convertToBase64(avatarDefault));
+        // formData.append("username", name);
+        // formData.append("email", mail);
+        // formData.append("password", password);
+        // formData.append("newsletter", newsLetter);
+        // formData.append("picture", convertToBase64(avatarDefault));
+        data = {
+          username: name,
+          email: mail,
+          password: password,
+          newsletter: newsLetter,
+        };
       } else {
         setResult("Veuillez remplir tous les champs, SVP");
         return;
@@ -38,7 +45,8 @@ const SignUp = ({ handleToken, setModalVisible }) => {
       try {
         const response = await axios.post(
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/signup",
-          formData
+          // formData
+          data
         );
         if (response.data.token) {
           setResult("Félicitation, votre compte a bien été créé.");
