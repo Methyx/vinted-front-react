@@ -84,7 +84,11 @@ const OfferDetails = ({ setMaskSearch }) => {
                   })}
                   {offer.product_details.map((item, index) => {
                     const key = Object.keys(item)[0];
-                    caracteristics.push(item[key]);
+                    if (item[key]) {
+                      caracteristics.push(item[key]);
+                    } else {
+                      caracteristics.push("-unknown-");
+                    }
                     return <p key={index}>{key}</p>;
                   })}
                 </section>
