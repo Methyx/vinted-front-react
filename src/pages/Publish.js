@@ -3,9 +3,9 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Publish = ({ setModalVisible, setCreateOffer }) => {
+const Publish = ({ setModalVisible, setMaskSearch }) => {
   const navigate = useNavigate();
-  setCreateOffer(true);
+  setMaskSearch(true);
 
   // STATES
   const [title, setTitle] = useState("");
@@ -186,7 +186,7 @@ const Publish = ({ setModalVisible, setCreateOffer }) => {
         </form>
       ) : (
         <div>
-          <p>Vous devez d'abord vous connecter</p>
+          <p>Vous devez être connecté pour publier</p>
           {setModalVisible("login")}
         </div>
       )}

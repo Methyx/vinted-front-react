@@ -12,7 +12,7 @@ import MiniOffer from "../components/MiniOffer";
 //functions
 import fetchDataHome from "../functions/fetchDataHome";
 
-const Home = ({ sortParams, page, setPage, setCreateOffer }) => {
+const Home = ({ sortParams, page, setPage, setMaskSearch }) => {
   // USESTATES du composant
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +48,7 @@ const Home = ({ sortParams, page, setPage, setCreateOffer }) => {
 
   const nbPages = Math.ceil(offers.count / nbOffersPerPage);
   const navigate = useNavigate();
-  setCreateOffer(false);
+  setMaskSearch(false);
   // RETURN Here
   return (
     <>

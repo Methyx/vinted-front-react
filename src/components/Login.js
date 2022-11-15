@@ -28,6 +28,7 @@ const Login = ({ handleToken, setModalVisible }) => {
         if (response.data.token) {
           handleToken(response.data.token, response.data.account.username);
           setModalVisible("");
+          document.body.style.overflow = "auto";
         } else {
           setError("Désolé, une erreur s'est produite. Veuillez réessayer SVP");
         }

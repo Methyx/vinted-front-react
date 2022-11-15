@@ -45,6 +45,7 @@ const SignUp = ({ handleToken, setModalVisible }) => {
           handleToken(response.data.token, name);
           setTimeout(() => {
             setModalVisible("");
+            document.body.style.overflow = "auto";
           }, 2000);
         } else {
           setResult("Désolé, un problème a eu lieu. Veuillez réessayez SVP");

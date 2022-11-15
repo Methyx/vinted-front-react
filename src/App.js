@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 // Pages
 import Home from "./pages/Home";
 import OfferDetails from "./pages/OfferDetails";
+import Payment from "./pages/Payment";
 
 // Components
 import Header from "./components/Header";
@@ -22,7 +23,7 @@ function App() {
   const [maxPrice, setMaxPrice] = useState(1000);
   const [page, setPage] = useState(1);
   const [modalVisible, setModalVisible] = useState("");
-  const [createOffer, setCreateOffer] = useState(false);
+  const [maskSearch, setMaskSearch] = useState(false);
 
   // Init d'un tableau de params pour passer en props
   const sortParams = {
@@ -56,7 +57,7 @@ function App() {
         setPage={setPage}
         // modaVisible={modalVisible}
         setModalVisible={setModalVisible}
-        createOffer={createOffer}
+        maskSearch={maskSearch}
       />
       <Routes>
         <Route
@@ -66,20 +67,29 @@ function App() {
               sortParams={sortParams}
               page={page}
               setPage={setPage}
-              setCreateOffer={setCreateOffer}
+              setMaskSearch={setMaskSearch}
             />
           }
         ></Route>
         <Route
           path="/offer/:id"
-          element={<OfferDetails setCreateOffer={setCreateOffer} />}
+          element={<OfferDetails setMaskSearch={setMaskSearch} />}
         ></Route>
         <Route
           path="/publish"
           element={
             <Publish
               setModalVisible={setModalVisible}
-              setCreateOffer={setCreateOffer}
+              setMaskSearch={setMaskSearch}
+            />
+          }
+        ></Route>
+        <Route
+          path="/payment"
+          element={
+            <Payment
+              setMaskSearch={setMaskSearch}
+              setModalVisible={setModalVisible}
             />
           }
         ></Route>

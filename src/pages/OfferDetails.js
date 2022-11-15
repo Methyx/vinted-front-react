@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import fetchDataOffer from "../functions/fetchDataOffer";
 
-const OfferDetails = ({ setCreateOffer }) => {
+const OfferDetails = ({ setMaskSearch }) => {
   // PARAMS
   const { id } = useParams();
+  const navigate = useNavigate();
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -35,7 +37,7 @@ const OfferDetails = ({ setCreateOffer }) => {
 
   // init
   const caracteristics = [];
-  setCreateOffer(false);
+  setMaskSearch(false);
 
   // RETURN Here
   return (
@@ -106,7 +108,18 @@ const OfferDetails = ({ setCreateOffer }) => {
                   <span>{offer.owner.account.username}</span>
                 </div>
               )}
-              <button className="buy">Acheter</button>
+              <button
+                className="buy"
+                onClick={() =>
+                  navigate("/payment", {
+                    state: {
+                      offerId: id,
+                    },
+                  })
+                }
+              >
+                Acheter
+              </button>
             </section>
           </div>
         </div>

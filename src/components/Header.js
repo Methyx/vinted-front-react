@@ -12,7 +12,7 @@ const Header = ({
   setPage,
   // modalVisible,
   setModalVisible,
-  createOffer,
+  maskSearch,
 }) => {
   // Init
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Header = ({
             <img src={logoVinted} alt="logo vinted" />
           </Link>
         </section>
-        {!createOffer && (
+        {!maskSearch && (
           <section className="center">
             <SearchOffers
               sortParams={sortParams}
