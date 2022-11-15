@@ -24,7 +24,6 @@ const Login = ({ handleToken, setModalVisible }) => {
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/login",
           user
         );
-        // console.log(response.data);
         if (response.data.token) {
           handleToken(response.data.token, response.data.account.username);
           setModalVisible("");

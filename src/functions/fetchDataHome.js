@@ -39,11 +39,7 @@ const fetchDataHome = async (
   setIsLoading(true);
   try {
     const response = await axios.get(url);
-    // const response = await axios.get(
-    //   "https://lereacteur-vinted-api.herokuapp.com/offers"
-    // );
     setOffers(response.data);
-    // console.log(response.data);
     setIsLoading(false);
   } catch (error) {
     console.log(error.message);

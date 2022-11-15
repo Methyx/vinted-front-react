@@ -1,5 +1,3 @@
-/* @import "react-multi-carousel/lib/styles.css"; */
-
 .App {
   position: relative;
 }
@@ -62,7 +60,6 @@ header button {
   border-radius: 5px;
   font-size: 12px;
   margin-left: 10px;
-  /* margin: 0 15px; */
 }
 header button:hover {
   cursor: pointer;
@@ -111,7 +108,6 @@ header button:last-child {
 /* HOME :    HERO */
 
 .home-hero {
-  /* height: 450px; */
   height: 300px;
   position: relative;
   margin-bottom: 40px;
@@ -186,10 +182,6 @@ header button:last-child {
   height: 460px;
   width: min(230px, calc(100% / 3 - 15px));
 }
-
-/* .mini-offer {
-  width: 100%;
-} */
 .mini-offer:hover {
   cursor: pointer;
 }
@@ -492,8 +484,6 @@ header button:last-child {
   max-width: 450px;
   height: 550px;
   margin: 0 auto;
-  /* padding: 25px; */
-  /* border: 2px solid lightgray; */
 }
 .modal h1 {
   font-size: 26px;
@@ -567,8 +557,6 @@ header button:last-child {
   header .content {
     height: 200px;
     display: block;
-    /* flex-direction: column;
-    justify-content: space-around; */
   }
   header img {
     height: 35px;

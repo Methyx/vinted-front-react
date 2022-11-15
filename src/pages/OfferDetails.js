@@ -47,11 +47,6 @@ const OfferDetails = ({ setMaskSearch }) => {
       ) : (
         <div className="background-color">
           <div className="container offer-details">
-            {/* <section className="picture">
-              {offer.product_image[0]?.secure_url && (
-                <img src={offer.product_image[0].secure_url} alt="produit" />
-              )}
-            </section> */}
             <section className="offer-details-picture-container">
               <Carousel
                 responsive={responsive}
@@ -60,7 +55,6 @@ const OfferDetails = ({ setMaskSearch }) => {
                 slidesToSlide={1}
                 swipeable={true}
                 containerClass="carousel-container"
-                // itemClass="carousel-image-item"
                 deviceType={""}
               >
                 {offer.product_image.map((picture, index) => {

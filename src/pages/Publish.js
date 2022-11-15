@@ -51,7 +51,6 @@ const Publish = ({ setModalVisible, setMaskSearch }) => {
       if (response.data) {
         navigate("/");
       }
-      //   console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -83,11 +82,9 @@ const Publish = ({ setModalVisible, setMaskSearch }) => {
                       accept="image/*"
                       onChange={(event) => {
                         const tabKeys = Object.keys(event.target.files);
-                        // console.log(tabKeys);
                         const tabPictures = tabKeys.map((item) => {
                           return event.target.files[item];
                         });
-                        // console.log(tabPictures);
                         setPictures(tabPictures);
                       }}
                     />

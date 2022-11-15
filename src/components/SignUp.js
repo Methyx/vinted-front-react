@@ -1,10 +1,6 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-
-// import avatarDefault from "../img/avatar2.png";
-// import convertToBase64 from "../functions/convertToBase64";
 
 const SignUp = ({ handleToken, setModalVisible }) => {
   // STATES
@@ -14,24 +10,12 @@ const SignUp = ({ handleToken, setModalVisible }) => {
   const [newsLetter, setNewsletter] = useState(false);
   const [result, setResult] = useState("");
 
-  // INIT
-  // const navigate = useNavigate();
-  // const returnHome = () => {
-  //   setModalVisible("");
-  // };
-
   // functions
   const handleSubmit = (event) => {
     const fetchData = async () => {
       setResult("");
-      // const formData = new FormData();
       let data = {};
       if (name && mail && password) {
-        // formData.append("username", name);
-        // formData.append("email", mail);
-        // formData.append("password", password);
-        // formData.append("newsletter", newsLetter);
-        // formData.append("picture", convertToBase64(avatarDefault));
         data = {
           username: name,
           email: mail,
@@ -45,7 +29,6 @@ const SignUp = ({ handleToken, setModalVisible }) => {
       try {
         const response = await axios.post(
           "https://site--backend-vinted--gw6mlgwnmzwz.code.run/user/signup",
-          // formData
           data
         );
         if (response.data.token) {

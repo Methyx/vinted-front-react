@@ -55,7 +55,6 @@ function App() {
         userName={userName}
         sortParams={sortParams}
         setPage={setPage}
-        // modaVisible={modalVisible}
         setModalVisible={setModalVisible}
         maskSearch={maskSearch}
       />

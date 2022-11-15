@@ -37,7 +37,6 @@ const SearchOffers = ({ sortParams, setPage }) => {
           <FormControlLabel
             control={
               <Switch
-                // defaultChecked
                 value={descendingPrices}
                 size="small"
                 onChange={(event) => {
@@ -53,7 +52,6 @@ const SearchOffers = ({ sortParams, setPage }) => {
         </div>
         <div className="slider">
           <p>Fourchette de prix</p>
-          {/* <br></br> */}
           <Box sx={{ width: 8 / 10 }}>
             <Slider
               value={[minPrice, maxPrice]}
