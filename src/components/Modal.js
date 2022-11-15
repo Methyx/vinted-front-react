@@ -2,11 +2,13 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 
 const Modal = ({ handleToken, modalVisible, setModalVisible }) => {
+  document.body.style.overflow = "hidden";
   return (
     <div
       className="modal-root"
       onClick={() => {
         setModalVisible(false);
+        document.body.style.overflow = "auto";
       }}
     >
       <div
@@ -18,6 +20,7 @@ const Modal = ({ handleToken, modalVisible, setModalVisible }) => {
         <button
           onClick={() => {
             setModalVisible(false);
+            document.body.style.overflow = "auto";
           }}
         >
           X
