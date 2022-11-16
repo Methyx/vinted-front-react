@@ -18,14 +18,18 @@ const Publish = ({ setModalVisible, setMaskSearch }) => {
   const [price, setPrice] = useState();
   const [pictures, setPictures] = useState();
   const [alert, setAlert] = useState("");
+  const [isBusy, setIsBusy] = useState(false);
 
   const handlePostOffer = async (event) => {
     event.preventDefault();
+    setIsBusy(true);
     setAlert("");
     if (!title || !description || !price) {
       setAlert(
         "Merci de bien vouloir remplir au minimum 1 titre, 1 description et 1 prix pour publier"
       );
+      setIsBusy(false);
+      return;
     }
     try {
       const formData = new FormData();
@@ -49,10 +53,12 @@ const Publish = ({ setModalVisible, setMaskSearch }) => {
         }
       );
       if (response.data) {
+        setIsBusy(false);
         navigate("/");
       }
     } catch (error) {
       console.log(error.message);
+      setIsBusy(false);
     }
   };
 
@@ -188,9 +194,11 @@ const Publish = ({ setModalVisible, setMaskSearch }) => {
             </div>
             <article className="form-footer">
               {alert && <p className="alert">{alert}</p>}
-              <button className="publish" type="submit">
-                Publier
-              </button>
+              {!isBusy && (
+                <button className="publish" type="submit">
+                  Publier
+                </button>
+              )}
             </article>
           </div>
         </form>
