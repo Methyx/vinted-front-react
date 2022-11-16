@@ -62,6 +62,8 @@ const CheckoutForm = ({ offerToBuy }) => {
       //   console.log(response.data);
     } catch (error) {
       console.log(error.message);
+      setMessage("un problème est survenu pendant le paiement");
+      setBlockClic(false);
     }
   };
   //Return
