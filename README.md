@@ -16,4 +16,4 @@ Technical :
 - React
 - MongoDB
 
-<img src="./src/img/Vinted.gif>
+<img src="./src/img/Vinted.gif">
